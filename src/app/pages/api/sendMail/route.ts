@@ -4,7 +4,7 @@ export async function POST(req :NextRequest) {
   if (req.method === 'POST') {
     const { name, email, message } = await req.json();
     // Create a Nodemailer transporter using SMTP
-    let transporter = nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com', // Your SMTP provider (e.g., Gmail, Outlook, etc.)
       port: 465, // For secure connection
       secure: true, // Use SSL
@@ -17,7 +17,7 @@ export async function POST(req :NextRequest) {
       // Send the email
       await transporter.sendMail({
         from: process.env.NEXT_PUBLIC_SMTP_USER, // Sender address (your email)
-        to: 'kumararyan101203@gmail.com', // Recipient address
+        to: 'digideck.in@gmail.com', // Recipient address
         subject: `${name} send message from Portfolio`, // Subject line
         text: `Name : ${name}\nEmail : ${email}\n\n${message}`, // Plain text body
       });
